@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_label_start"
+        android:id="@+id/buttonStart"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/textViewTime"
+        android:layout_toStartOf="@+id/textViewTime" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_label_pause"
+        android:id="@+id/buttonPause"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textViewTime"
+        android:layout_toEndOf="@+id/textViewTime" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/text_label_distance"
+        android:id="@+id/textViewDistance"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/buttonStart"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/text_label_time"
+        android:id="@+id/textViewTime"
+        android:layout_below="@+id/textViewDistanceNow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/text_label_distance_now"
+        android:id="@+id/textViewDistanceNow"
+        android:textStyle="bold"
+        android:textSize="@dimen/abc_text_size_display_2_material"
+        android:layout_below="@+id/textViewDistance"
+        android:layout_centerHorizontal="true" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer"
+        android:layout_below="@+id/textViewTime"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/abc_text_size_display_2_material"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/text_view_label"
+        android:id="@+id/textViewAlgoritam"
+        android:layout_below="@+id/chronometer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/textViewAlgoritam"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textViewAlgoritam"
+        android:layout_alignStart="@+id/textViewAlgoritam"
+        android:layout_alignRight="@+id/textViewAlgoritam"
+        android:layout_alignEnd="@+id/textViewAlgoritam" />
+
+
+</RelativeLayout>
+

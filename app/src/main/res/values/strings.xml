@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Distance Counter</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_label_resume">Nastavi</string>
+    <string name="button_label_pause">Pauza</string>
+    <string name="button_label_start">Start</string>
+    <string name="text_label_time">Vreme:</string>
+    <string name="text_label_distance">Pređena razdaljina:</string>
+    <string name="text_label_distance_now">DistanceNow</string>
+    <string name="button_label_current_position">Trenutna lokacija</string>
+    <string name="text_view_label">Algoritam računanja pređenog puta:</string>
+</resources>
