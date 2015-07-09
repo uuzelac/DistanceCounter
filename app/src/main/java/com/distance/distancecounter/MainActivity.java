@@ -25,8 +25,8 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity{
 
-    private static final long MIN_DISTANCE_FOR_UPDATE = 1; // u metrima
-    private static final long MIN_TIME_FOR_UPDATE = 10000;  // u ms
+    private static final long MIN_DISTANCE_FOR_UPDATE = 5; // u metrima
+    private static final long MIN_TIME_FOR_UPDATE = 5000;  // u ms
 
     protected boolean mStartStop = false;
     protected boolean mPauseResume = false;
@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity{
 
         //Inicijalizacija spinera
         mSpinner = (Spinner) findViewById(R.id.spinner);
-        List<String> listOfAlgoritams = new ArrayList(2);
+        List<String> listOfAlgoritams = new ArrayList<>(2);
         listOfAlgoritams.add("World Geodetic System");
         listOfAlgoritams.add("Haversine formula");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
@@ -116,7 +116,7 @@ public class MainActivity extends ActionBarActivity{
         mLocationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER,
                 MIN_TIME_FOR_UPDATE,
-                MIN_TIME_FOR_UPDATE,
+                MIN_DISTANCE_FOR_UPDATE,
                 mLocationListener
         );
 
@@ -125,6 +125,11 @@ public class MainActivity extends ActionBarActivity{
         mStart.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(mLocation==null){
+                    setCurrentLocation();
+                }
+
                 if (mLocation!=null && !mStartStop) {
                     mStartStop = true;
                     mPause.setEnabled(true);
