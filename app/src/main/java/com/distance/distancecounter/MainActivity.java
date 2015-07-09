@@ -2,7 +2,6 @@ package com.distance.distancecounter;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -83,10 +82,10 @@ public class MainActivity extends ActionBarActivity{
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         //Criteria for network provider
-        Criteria criteria = new Criteria();
-        criteria.setPowerRequirement(Criteria.POWER_LOW);
-        criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-        mLocationProvider = mLocationManager.getBestProvider(criteria, true);
+//        Criteria criteria = new Criteria();
+//        criteria.setPowerRequirement(Criteria.POWER_LOW);
+//        criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+//        mLocationProvider = mLocationManager.getBestProvider(criteria, true);
 
 
         mLocationListener = new LocationListener() {
@@ -106,12 +105,19 @@ public class MainActivity extends ActionBarActivity{
             }
         };
 
+//        mLocationManager.requestLocationUpdates(
+//                MIN_TIME_FOR_UPDATE,
+//                MIN_DISTANCE_FOR_UPDATE,
+//                criteria,
+//                mLocationListener,
+//                null
+//        );
+
         mLocationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER,
                 MIN_TIME_FOR_UPDATE,
-                MIN_DISTANCE_FOR_UPDATE,
-                criteria,
-                mLocationListener,
-                null
+                MIN_TIME_FOR_UPDATE,
+                mLocationListener
         );
 
         setCurrentLocation();
@@ -169,6 +175,7 @@ public class MainActivity extends ActionBarActivity{
                                     }
                                 }
                             })
+                            .setCancelable(false)
                             .create()
                             .show();
                 }else{
@@ -212,10 +219,10 @@ public class MainActivity extends ActionBarActivity{
 
     private void setCurrentLocation() {
 
-        mLocation = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        if (mLocation==null){
-            mLocation = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
+        mLocation = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        if (mLocation==null){
+//            mLocation = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        }
 
         if (mLocation != null) {
 
@@ -226,7 +233,7 @@ public class MainActivity extends ActionBarActivity{
 
         } else {
 
-            if (mLocationManager.isProviderEnabled(mLocationProvider)) {
+            if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 Toast.makeText(MainActivity.this, "Lokacija jos uvek nije poznata.",
                         Toast.LENGTH_LONG).show();
             } else {
@@ -302,7 +309,7 @@ public class MainActivity extends ActionBarActivity{
         public void run() {
             mRunning = true;
             while (mRunning) {
-                mLocation = mLocationManager.getLastKnownLocation(mLocationProvider);
+                mLocation = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 mCurrentLat = mLocation.getLatitude();
                 mCurrentLon = mLocation.getLongitude();
                 if (mCurrentLat != mPreviousLat || mCurrentLon != mPreviousLon) {
